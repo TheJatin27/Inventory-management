@@ -1,0 +1,121 @@
+/* Base styles for the sidebar */
+.sidenav {
+  width: 250px;
+  height: 100vh;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title inside the sidebar */
+.sidenav h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #ecf0f1;
+  font-weight: 700;
+}
+
+/* List of links in the sidebar */
+.sidenav ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+/* List items (links) */
+.sidenav ul li {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Links inside sidebar */
+.sidenav ul li a {
+  display: block;
+  padding: 10px;
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+}
+
+/* Hover effect for links */
+.sidenav ul li a:hover {
+  background-color: #1abc9c;
+  color: #fff;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .sidenav {
+    width: 200px;
+    padding: 15px 10px;
+  }
+
+  .sidenav h2 {
+    font-size: 20px;
+  }
+
+  .sidenav ul li a {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidenav {
+    width: 100%;
+    height: auto;
+    padding: 10px 5px;
+    position: relative;
+    box-shadow: none;
+  }
+
+  .sidenav h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .sidenav ul li a {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .sideNav {
+    position: fixed;
+    width: 200px;
+  }
+
+  .mainContent {
+    margin-left: 200px;
+  }
+}
+/* Mobile view */
+@media (max-width: 768px) {
+  .sideNavStyle {
+    display: none;
+  }
+
+  .toggleButtonStyle {
+    display: block;
+  }
+
+  .topNavStyle {
+    font-size: 16px;
+  }
+
+  .linkStyle {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
