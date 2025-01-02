@@ -1,0 +1,92 @@
+.dashboard-container {
+    padding: 20px;
+  }
+  
+  .cards-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .card {
+    background: #1F5061;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 48%; /* Card takes up nearly half of the container */
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .table-container {
+    overflow-x: auto; /* Makes the table horizontally scrollable on small screens */
+  }
+  
+  .dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .dashboard-table th, .dashboard-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .dashboard-table th {
+    background-color: #1F5061;
+    color: white;
+  }
+  
+  .dashboard-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .dashboard-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* Mobile view adjustments */
+  @media (max-width: 768px) {
+    .cards-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .card {
+      width: 90%; /* Make cards full-width on mobile */
+      margin-bottom: 20px;
+    }
+  
+    .card h3 {
+      font-size: 18px;
+    }
+  
+    .card p {
+      font-size: 30px;
+    }
+  
+    .dashboard-table th, .dashboard-table td {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  

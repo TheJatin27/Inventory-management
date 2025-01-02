@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+/* Mobile Styles for SideNav */
+@media (max-width: 768px) {
+  /* Sidebar styles when in mobile mode */
+  .sideNavStyle {
+    width: 100%; /* Full-width sidebar on mobile */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #1F5061; /* Blue color */
+    padding-top: 60px;
+    display: none; /* Hide sidebar by default on mobile */
+  }
+
+  /* Hamburger button for mobile */
+  .toggleButtonStyle {
+    display: block; /* Show hamburger button on small screens */
+  }
+
+  /* Links should be slightly smaller on mobile */
+  .linkStyle {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+}
