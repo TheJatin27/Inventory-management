@@ -1,63 +1,68 @@
-.App {
-  text-align: center;
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  flex-grow: 1;
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-content-expanded {
+  margin-left: 0;
 }
-/* Mobile Styles for SideNav */
+
 @media (max-width: 768px) {
-  /* Sidebar styles when in mobile mode */
-  .sideNavStyle {
-    width: 100%; /* Full-width sidebar on mobile */
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: #1F5061; /* Blue color */
-    padding-top: 60px;
-    display: none; /* Hide sidebar by default on mobile */
+  .app-container {
+    flex-direction: column;
   }
 
-  /* Hamburger button for mobile */
-  .toggleButtonStyle {
-    display: block; /* Show hamburger button on small screens */
+  .main-content {
+    margin-left: 0;
   }
 
-  /* Links should be slightly smaller on mobile */
-  .linkStyle {
-    font-size: 16px;
-    padding: 12px 20px;
+  .main-content-expanded {
+    margin-left: 0;
   }
+}
+
+/* Red, Black, White Palette */
+.red {
+  color: #D32F2F;
+}
+
+.black {
+  color: #333;
+}
+
+.white {
+  color: #fff;
+}
+
+.white-bg {
+  background-color: #fff;
+}
+
+.red-bg {
+  background-color: #D32F2F;
+}
+
+.black-bg {
+  background-color: #333;
 }

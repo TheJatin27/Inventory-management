@@ -1,45 +1,40 @@
 import React from 'react';
-import './Dashboard.css'; // Ensure this is linked
+import './Dashboard.css';
 
 const Dashboard = () => {
-  const adminData = [
+  const users = [
     { id: 1, name: 'John Doe', email: 'john@example.com' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-  ];
-
-  const userData = [
-    { id: 1, name: 'User One', email: 'user1@example.com' },
-    { id: 2, name: 'User Two', email: 'user2@example.com' },
-    { id: 3, name: 'User Three', email: 'user3@example.com' },
-    { id: 4, name: 'User Four', email: 'user4@example.com' },
+    { id: 2, name: 'Jane Doe', email: 'jane@example.com' },
+    { id: 3, name: 'Alice Smith', email: 'alice@example.com' },
+    { id: 4, name: 'Bob Johnson', email: 'bob@example.com' },
   ];
 
   return (
-    <div className="dashboard-container">
-      <div className="cards-container">
+    <div className="dashboard">
+      <div className="cards">
         <div className="card">
           <h3>Total Admins</h3>
-          <p>{adminData.length}</p>
+          <p>5</p>
         </div>
         <div className="card">
           <h3>Total Users</h3>
-          <p>{userData.length}</p>
+          <p>{users.length}</p>
         </div>
       </div>
-      
-      <div className="table-container">
+
+      <div className="user-table">
         <h3>User Information</h3>
-        <table className="dashboard-table">
+        <table>
           <thead>
             <tr>
               <th>Serial No.</th>
               <th>User ID</th>
-              <th>Name</th>
+              <th>User Name</th>
               <th>Email</th>
             </tr>
           </thead>
           <tbody>
-            {userData.map((user, index) => (
+            {users.map((user, index) => (
               <tr key={user.id}>
                 <td>{index + 1}</td>
                 <td>{user.id}</td>

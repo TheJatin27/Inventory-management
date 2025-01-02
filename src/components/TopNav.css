@@ -1,0 +1,69 @@
+/* Top Navbar styles */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F5061;
+    color: white;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .brand h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .profile-btn {
+    background-color: #D32F2F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .profile-btn:hover {
+    background-color: #C2185B;
+  }
+  
+  .hamburger {
+    display: none;
+    background: #1F5061;
+    color: white;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  
+    .top-nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .top-nav.open {
+      display: flex;
+    }
+  
+    .profile-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .brand h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  }
+  

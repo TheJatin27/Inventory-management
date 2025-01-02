@@ -1,40 +1,32 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import './App.css';
 import SideNav from './components/SideNav';
-import Dashboard from './pages/Dashboard';
-import Inventory from './pages/Inventory';
-import Invoice from './pages/Invoice';
-import Accounting from './pages/Accounting';
-import Users from './pages/Users';
 import TopNav from './components/TopNav';
+import Dashboard from './pages/Dashboard';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 const App = () => {
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  
+  const toggleSideNav = () => {
+    setIsSideNavOpen(!isSideNavOpen);
+  };
+
   return (
     <Router>
-      <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-        {/* Top Navigation Bar */}
-        <TopNav />
+      <div className={`app-container ${isSideNavOpen ? 'side-nav-open' : ''}`}>
+        {/* Top Navbar */}
+        <TopNav toggleSideNav={toggleSideNav} />
 
-        <div style={{ display: 'flex', marginTop: '60px' }}>
-          {/* Side Navigation Bar */}
-          <SideNav />
-          
-          <div
-            style={{
-              marginLeft: '250px',
-              padding: '20px',
-              flex: 1,
-              transition: 'margin-left 0.3s',
-            }}
-          >
-            <Routes>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/inventory" element={<Inventory />} />
-              <Route path="/invoice" element={<Invoice />} />
-              <Route path="/accounting" element={<Accounting />} />
-              <Route path="/users" element={<Users />} />
-            </Routes>
-          </div>
+        {/* Sidebar */}
+        <SideNav isOpen={isSideNavOpen} toggleSideNav={toggleSideNav} />
+
+        {/* Main Content */}
+        <div className={`main-content ${isSideNavOpen ? 'main-content-expanded' : ''}`}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            {/* Add other routes here */}
+          </Routes>
         </div>
       </div>
     </Router>

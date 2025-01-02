@@ -1,27 +1,24 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';
+import './TopNav.css';
 
-const TopNav = () => {
+const TopNav = ({ toggleSideNav }) => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+    toggleSideNav();  // Sync side nav with top navbar
+  };
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '15px 30px',
-        backgroundColor: '#1F3A6D', // Same color as sidebar
-        color: 'white',
-        position:'fixed',
-        width:'97%',
-      }}
-    >
-      <div style={{ fontSize: '24px', fontWeight: 'bold' }}>BrandName</div>
-
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <FontAwesomeIcon icon={faUserCircle} style={{ marginRight: '10px', fontSize: '20px' }} />
-        <span style={{ marginRight: '20px' }}>Profile</span>
-        <FontAwesomeIcon icon={faSignOutAlt} style={{ fontSize: '20px', cursor: 'pointer' }} />
+    <div className="top-nav">
+      <button className="hamburger" onClick={toggleNav}>
+        ☰
+      </button>
+      <div className="brand">
+        <h2>My Brand</h2>
+      </div>
+      <div className="profile">
+        <button className="profile-btn">Logout</button>
       </div>
     </div>
   );
