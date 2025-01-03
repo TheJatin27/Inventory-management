@@ -1,0 +1,131 @@
+/* Inventory Page Styles */
+.inventory-container {
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin-top:5%;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  h3 {
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .label {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .dropdown-container {
+    margin-top: 15px;
+  }
+  
+  .add-dropdown-btn,
+  .add-column-btn {
+    background-color: #1F5061;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .add-dropdown-btn:hover,
+  .add-column-btn:hover {
+    background-color: #D32F2F;
+  }
+  
+  .dropdown-input-group {
+    margin-bottom: 10px;
+  }
+  
+  .dropdown-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Inventory Table */
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .inventory-table th,
+  .inventory-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .inventory-table th {
+    background-color: #1F5061;
+    color: white;
+  }
+  
+  .inventory-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .inventory-container {
+      padding: 10px;
+      
+    margin-top:30%;
+    }
+  
+    .form-container {
+      padding: 15px;
+    }
+  
+    .input-field,
+    .dropdown-container {
+      font-size: 14px;
+    }
+  
+    .inventory-table {
+      font-size: 12px;
+    }
+  
+    .inventory-table th, .inventory-table td {
+      padding: 8px;
+    }
+  
+    .dropdown-input {
+      font-size: 12px;
+    }
+  }
+  

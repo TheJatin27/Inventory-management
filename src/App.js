@@ -3,6 +3,7 @@ import './App.css';
 import SideNav from './components/SideNav';
 import TopNav from './components/TopNav';
 import Dashboard from './pages/Dashboard';
+import Inventory from './pages/Inventory'; // Import Inventory page
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <div className={`main-content ${isSideNavOpen ? 'main-content-expanded' : ''}`}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/inventory" element={<Inventory />} /> {/* Inventory Page Route */}
             {/* Add other routes here */}
           </Routes>
         </div>

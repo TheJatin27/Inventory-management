@@ -1,6 +1,6 @@
 /* Dashboard Container */
 .dashboard-container {
-  margin-left: 250px; /* Space for the sidebar on larger screens */
+  margin-left: 50px; /* Space for the sidebar on larger screens */
   margin-top: 80px; /* Space for the fixed top navigation bar */
   padding: 20px; /* Padding inside the dashboard container */
   background-color: #f4f4f4;
