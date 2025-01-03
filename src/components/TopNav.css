@@ -1,69 +1,76 @@
 /* Top Navbar styles */
 .top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1F5061;
-    color: white;
-    padding: 15px 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-  
-  .brand h2 {
-    margin: 0;
-    font-size: 24px;
-  }
-  
-  .profile-btn {
-    background-color: #D32F2F;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .profile-btn:hover {
-    background-color: #C2185B;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1F3A56; /* Navy blue background */
+  color: white;
+  padding: 15px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #FF4D4D; /* Contrasting red for brand name */
+}
+
+.profile-btn {
+  background-color: #D32F2F; /* Red background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-btn:hover {
+  background-color: #B71C1C; /* Darker red on hover */
+}
+
+.hamburger {
+  display: none;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  margin-left: auto;
+  margin-right: 10px; /* Space on mobile screens */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .hamburger {
-    display: none;
-    background: #1F5061;
-    color: white;
-    border: none;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1001;
+    display: block; /* Show hamburger icon on smaller screens */
   }
-  
-  @media (max-width: 768px) {
-    .hamburger {
-      display: block;
-    }
-  
-    .top-nav {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .top-nav.open {
-      display: flex;
-    }
-  
-    .profile-btn {
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .brand h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
+
+  .top-nav {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+    padding: 10px;
   }
-  
+
+  .top-nav.open {
+    display: flex;
+  }
+
+  .profile-btn {
+    width: 100%; /* Full width button for better usability */
+    margin-top: 10px;
+    text-align: center; /* Center text */
+  }
+
+  .brand h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}

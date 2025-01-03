@@ -15,7 +15,7 @@ const TopNav = ({ toggleSideNav }) => {
         ☰
       </button>
       <div className="brand">
-        <h2>My Brand</h2>
+        {/* <h2>My Brand</h2> */}
       </div>
       <div className="profile">
         <button className="profile-btn">Logout</button>
