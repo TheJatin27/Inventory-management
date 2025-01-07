@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
 import SideNav from './components/SideNav';
+import AdminLogin from './pages/AdminLogin'
 import TopNav from './components/TopNav';
 import Dashboard from './pages/Dashboard';
 import Users from './pages/Users';
+import Invoice from './pages/Invoice';
+import Accounting from './pages/Accounting';
 import Inventory from './pages/Inventory'; // Import Inventory page
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
@@ -29,6 +32,9 @@ const App = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/inventory" element={<Inventory />} /> {/* Inventory Page Route */}
             <Route path="/users" element={<Users />} />
+            <Route path="/invoice" element={<Invoice />} />
+            <Route path="/accounting" element={<Accounting />} />
+            <Route path="/AdminLogin" element={<AdminLogin />} />
 
             {/* Add other routes here */}
           </Routes>
