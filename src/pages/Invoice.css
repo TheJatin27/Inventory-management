@@ -1,14 +1,46 @@
+/* Button at the top */
+.top-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.add-invoice-data-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-invoice-data-btn:hover {
+  background-color: #45a049;
+}
+
+/* Keeping the rest of the previous styles */
 .invoice-container {
-  margin-top: 5%; /* Space from the top */
-  padding: 10px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
+h2 {
+  color: #333;
+}
+
+h3 {
+  color: #333;
+  margin-top: 20px;
+}
+
 .form-container {
-  background-color: #f9f9f9;
+  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
@@ -18,105 +50,130 @@
 
 .input-field {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+.add-dropdown-btn,
+.add-column-btn {
+  background-color: #1F5061;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-dropdown-btn:hover,
+.add-column-btn:hover {
+  background-color: #D32F2F;
+}
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-table th,
+.inventory-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.inventory-table th {
+  background-color: #1F5061;
+  color: white;
+}
+
+.inventory-table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
 .dropdown-container {
   margin-top: 15px;
 }
 
-.add-dropdown-btn,
-.add-column-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.dropdown-input-group {
+  margin-bottom: 10px;
 }
 
-.add-dropdown-btn:hover,
-.add-column-btn:hover {
-  background-color: #0056b3;
-}
-
-.table-container {
-  overflow-x: auto; /* Enable horizontal scroll for mobile */
-  margin-top: 20px;
-}
-
-.invoice-table {
+.dropdown-input {
   width: 100%;
-  border-collapse: collapse;
-}
-
-.invoice-table th,
-.invoice-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
-}
-
-.invoice-table th {
-  background-color: #f4f4f4;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 @media (max-width: 768px) {
   .invoice-container {
-    margin-top: 25%; /* Increase top margin on smaller screens */
-    padding: 5%;
+    padding: 10px;
+    margin-top: 30%;
   }
 
-  .add-dropdown-btn,
-  .add-column-btn {
-    width: 100%; /* Full width buttons for better tap targets */
-    padding: 12px;
+  .form-container {
+    padding: 15px;
   }
 
-  .invoice-table th,
-  .invoice-table td {
-    font-size: 14px; /* Adjust font size for smaller screens */
+  .input-field,
+  .dropdown-container {
+    font-size: 14px;
+  }
+
+  .inventory-table {
+    font-size: 12px;
+  }
+
+  .inventory-table th,
+  .inventory-table td {
+    padding: 8px;
+  }
+
+  .dropdown-input {
+    font-size: 12px;
   }
 }
-.invoice-table {
+/* Checkbox and Radio Inputs */
+.checkbox-container,
+.radio-container {
+  margin-top: 20px;
+}
+
+.checkbox-input-group,
+.radio-input-group {
+  margin-bottom: 10px;
+}
+
+.checkbox-input,
+.radio-input {
   width: 100%;
-  border-collapse: collapse;
-  background-color: #f9f9f9; /* Table background color */
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-.invoice-table th {
-  background-color: #007bff; /* Header background color */
-  color: white; /* Header text color */
-  padding: 10px;
-  border: 1px solid #ccc;
-  text-align: left;
+.add-checkbox-btn,
+.add-radio-btn {
+  background-color: #1F5061;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
-.invoice-table td {
-  background-color: #ffffff; /* Row background color */
-  color: #333; /* Text color */
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-.invoice-table tr:nth-child(even) td {
-  background-color: #f4f4f4; /* Alternate row color */
-}
-
-.invoice-table tr:hover td {
-  background-color: #e0f7fa; /* Highlight color on hover */
-  color: #007bff; /* Text color on hover */
-}
-
-@media (max-width: 768px) {
-  .invoice-table th,
-  .invoice-table td {
-    font-size: 14px; /* Adjust font size for smaller screens */
-  }
+.add-checkbox-btn:hover,
+.add-radio-btn:hover {
+  background-color: #D32F2F;
 }
