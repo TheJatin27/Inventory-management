@@ -40,6 +40,11 @@ const SideNav = ({ isOpen, toggleSideNav }) => {
             Users
           </Link>
         </li>
+        <li>
+          <Link to="/ExpensePanel" className="nav-link" onClick={handleLinkClick}>
+            Expense Panel
+          </Link>
+          </li>
       </ul>
     </div>
   );

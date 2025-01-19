@@ -4,16 +4,10 @@ import './Invoice.css';
 
 const Invoice = () => {
   const [columnName, setColumnName] = useState('');
-  const [isDropdown, setIsDropdown] = useState(false);
-  const [isCheckbox, setIsCheckbox] = useState(false);
-  const [isRadio, setIsRadio] = useState(false);
-  const [dropdownValues, setDropdownValues] = useState([]);
-  const [checkboxValues, setCheckboxValues] = useState([]);
-  const [radioValues, setRadioValues] = useState([]);
-  const [columns, setColumns] = useState([]);
+  const [columnType, setColumnType] = useState('');
   const [dropdownInputFields, setDropdownInputFields] = useState([]);
-  const [checkboxInputFields, setCheckboxInputFields] = useState([]);
   const [radioInputFields, setRadioInputFields] = useState([]);
+  const [columns, setColumns] = useState([]);
 
   const navigate = useNavigate(); // For navigation
 
@@ -25,16 +19,6 @@ const Invoice = () => {
     const newValues = [...dropdownInputFields];
     newValues[index] = value;
     setDropdownInputFields(newValues);
-  };
-
-  const handleAddCheckboxValue = () => {
-    setCheckboxInputFields([...checkboxInputFields, '']);
-  };
-
-  const handleCheckboxValueChange = (index, value) => {
-    const newValues = [...checkboxInputFields];
-    newValues[index] = value;
-    setCheckboxInputFields(newValues);
   };
 
   const handleAddRadioValue = () => {
@@ -53,38 +37,36 @@ const Invoice = () => {
       {
         id: columns.length + 1,
         columnName,
-        isDropdown,
-        isCheckbox,
-        isRadio,
+        columnType,
         serialNo: columns.length + 1,
-        dropdownValues: dropdownInputFields,
-        checkboxValues: checkboxInputFields,
-        radioValues: radioInputFields,
+        dropdownValues: columnType === 'Dropdown' ? dropdownInputFields : [],
+        radioValues: columnType === 'Radio' ? radioInputFields : [],
       },
     ]);
     setColumnName('');
-    setIsDropdown(false);
-    setIsCheckbox(false);
-    setIsRadio(false);
-    setDropdownValues([]);
-    setCheckboxValues([]);
-    setRadioValues([]);
+    setColumnType('');
     setDropdownInputFields([]);
-    setCheckboxInputFields([]);
     setRadioInputFields([]);
   };
 
   const handleAddInvoiceData = () => {
     // Navigate to the "Add Invoice Data" page
-    navigate('/add-invoice-data');
+    navigate('/AddInvoiceData');
+  };
+
+  const handleViewInvoices = () => {
+    // Navigate to the "View Invoices" page
+    navigate('/ViewInvoice');
   };
 
   return (
     <div className="invoice-container">
-      {/* Button on top to add invoice data */}
       <div className="top-button-container">
         <button onClick={handleAddInvoiceData} className="add-invoice-data-btn">
           Add Invoice Data
+        </button>
+        <button onClick={handleViewInvoices} className="view-invoices-btn">
+          View Invoices
         </button>
       </div>
 
@@ -101,37 +83,22 @@ const Invoice = () => {
         </div>
         <div className="form-group">
           <label>Column Type:</label>
-          <div>
-            <input
-              type="checkbox"
-              id="dropdown"
-              checked={isDropdown}
-              onChange={() => setIsDropdown(!isDropdown)}
-            />
-            <label htmlFor="dropdown">Is Dropdown</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="checkbox"
-              checked={isCheckbox}
-              onChange={() => setIsCheckbox(!isCheckbox)}
-            />
-            <label htmlFor="checkbox">Is Checkbox</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="radio"
-              checked={isRadio}
-              onChange={() => setIsRadio(!isRadio)}
-            />
-            <label htmlFor="radio">Is Radio</label>
-          </div>
+          <select
+            value={columnType}
+            onChange={(e) => setColumnType(e.target.value)}
+            className="input-field"
+          >
+            <option value="">Select Column Type</option>
+            <option value="String">String</option>
+            <option value="Boolean">Boolean</option>
+            <option value="Integer">Integer</option>
+            <option value="Checkbox">Checkbox</option>
+            <option value="Radio">Radio</option>
+            <option value="Dropdown">Dropdown</option>
+          </select>
         </div>
 
-        {/* Dropdown Values Input */}
-        {isDropdown && (
+        {columnType === 'Dropdown' && (
           <div className="dropdown-container">
             <h3>Dropdown Values:</h3>
             {dropdownInputFields.map((value, index) => (
@@ -151,29 +118,7 @@ const Invoice = () => {
           </div>
         )}
 
-        {/* Checkbox Values Input */}
-        {isCheckbox && (
-          <div className="checkbox-container">
-            <h3>Checkbox Values:</h3>
-            {checkboxInputFields.map((value, index) => (
-              <div key={index} className="checkbox-input-group">
-                <input
-                  type="text"
-                  value={value}
-                  onChange={(e) => handleCheckboxValueChange(index, e.target.value)}
-                  className="input-field checkbox-input"
-                  placeholder={`Checkbox value ${index + 1}`}
-                />
-              </div>
-            ))}
-            <button onClick={handleAddCheckboxValue} className="add-checkbox-btn">
-              Add Checkbox Value
-            </button>
-          </div>
-        )}
-
-        {/* Radio Values Input */}
-        {isRadio && (
+        {columnType === 'Radio' && (
           <div className="radio-container">
             <h3>Radio Values:</h3>
             {radioInputFields.map((value, index) => (
@@ -205,12 +150,9 @@ const Invoice = () => {
             <tr>
               <th>Column ID</th>
               <th>Column Name</th>
-              <th>Is Dropdown</th>
-              <th>Is Checkbox</th>
-              <th>Is Radio</th>
+              <th>Column Type</th>
               <th>Serial No</th>
               <th>Dropdown Values</th>
-              <th>Checkbox Values</th>
               <th>Radio Values</th>
             </tr>
           </thead>
@@ -219,12 +161,9 @@ const Invoice = () => {
               <tr key={column.id}>
                 <td>{column.id}</td>
                 <td>{column.columnName}</td>
-                <td>{column.isDropdown ? 'Yes' : 'No'}</td>
-                <td>{column.isCheckbox ? 'Yes' : 'No'}</td>
-                <td>{column.isRadio ? 'Yes' : 'No'}</td>
+                <td>{column.columnType}</td>
                 <td>{column.serialNo}</td>
                 <td>{column.dropdownValues.join(', ')}</td>
-                <td>{column.checkboxValues.join(', ')}</td>
                 <td>{column.radioValues.join(', ')}</td>
               </tr>
             ))}

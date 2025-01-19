@@ -2,6 +2,9 @@
 .accounting-container {
   padding: 20px;
   font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 5%;
 }
 
 /* Style for the "Add Accounting Data" button */
@@ -11,7 +14,7 @@
 }
 
 .add-accounting-data-btn {
-  background-color: #007bff;
+  background-color: #1E88E5;
   color: white;
   padding: 10px 20px;
   font-size: 16px;
@@ -22,12 +25,16 @@
 }
 
 .add-accounting-data-btn:hover {
-  background-color: #0056b3;
+  background-color: #1565C0;
 }
 
-/* Style for the form container */
+/* Form container styles */
 .form-container {
   margin-bottom: 30px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -36,10 +43,11 @@
 
 .input-field {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   font-size: 14px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .form-group label {
@@ -48,7 +56,7 @@
   display: block;
 }
 
-/* Style for column type checkboxes */
+/* Style for dropdown, checkbox, and radio options */
 .form-group div {
   margin-bottom: 10px;
 }
@@ -57,12 +65,18 @@
   margin-right: 5px;
 }
 
-h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+/* Section headings */
+h2, h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #1E88E5;
 }
 
-/* Styling for input fields within dropdown, checkbox, and radio containers */
+h3 {
+  font-size: 18px;
+}
+
+/* Input groups for dropdown, checkbox, and radio */
 .dropdown-input-group,
 .checkbox-input-group,
 .radio-input-group {
@@ -80,11 +94,11 @@ h3 {
   border: 1px solid #ccc;
 }
 
-/* Buttons for adding values to dropdown, checkbox, and radio inputs */
+/* Buttons for adding dropdown, checkbox, and radio values */
 .add-dropdown-btn,
 .add-checkbox-btn,
 .add-radio-btn {
-  background-color: #28a745;
+  background-color: #1E88E5;
   color: white;
   padding: 8px 16px;
   font-size: 14px;
@@ -98,12 +112,12 @@ h3 {
 .add-dropdown-btn:hover,
 .add-checkbox-btn:hover,
 .add-radio-btn:hover {
-  background-color: #218838;
+  background-color: #1565C0;
 }
 
-/* Add Column Button Style */
+/* Add Column Button */
 .add-column-btn {
-  background-color: #007bff;
+  background-color: #1E88E5;
   color: white;
   padding: 10px 20px;
   font-size: 16px;
@@ -115,20 +129,25 @@ h3 {
 }
 
 .add-column-btn:hover {
-  background-color: #0056b3;
+  background-color: #1565C0;
 }
 
-/* Table Container */
+/* Table container styles */
 .table-container {
   margin-top: 30px;
   overflow-x: auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Table Style */
+/* Table styles */
 .accounting-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  min-width: 800px;
 }
 
 .accounting-table th,
@@ -139,7 +158,8 @@ h3 {
 }
 
 .accounting-table th {
-  background-color: #f8f9fa;
+  background-color: #1E88E5;
+  color: white;
   font-weight: bold;
 }
 
@@ -147,11 +167,55 @@ h3 {
   background-color: #f2f2f2;
 }
 
-/* Table Row Styling */
 .accounting-table td {
   font-size: 14px;
+  word-break: break-word;
 }
 
-.accounting-table td:last-child {
-  word-break: break-word;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .accounting-container {
+    padding: 10px;
+  }
+
+  .add-accounting-data-btn,
+  .add-column-btn {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+
+  .accounting-table {
+    min-width: 100%;
+  }
+
+  .accounting-table th,
+  .accounting-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2, h3 {
+    font-size: 16px;
+  }
+
+  .add-accounting-data-btn,
+  .add-column-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .input-field {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .table-container {
+    padding: 10px;
+  }
 }

@@ -1,92 +1,68 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Accounting.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Accounting.css";
 
 const Accounting = () => {
-  const [columnName, setColumnName] = useState('');
-  const [isDropdown, setIsDropdown] = useState(false);
-  const [isCheckbox, setIsCheckbox] = useState(false);
-  const [isRadio, setIsRadio] = useState(false);
+  const [columnName, setColumnName] = useState("");
+  const [dataType, setDataType] = useState("String");
   const [dropdownValues, setDropdownValues] = useState([]);
-  const [checkboxValues, setCheckboxValues] = useState([]);
   const [radioValues, setRadioValues] = useState([]);
   const [columns, setColumns] = useState([]);
-  const [dropdownInputFields, setDropdownInputFields] = useState([]);
-  const [checkboxInputFields, setCheckboxInputFields] = useState([]);
-  const [radioInputFields, setRadioInputFields] = useState([]);
-
-  const navigate = useNavigate(); // For navigation
+  const navigate = useNavigate();
 
   // Handle adding dropdown values
   const handleAddDropdownValue = () => {
-    setDropdownInputFields([...dropdownInputFields, '']);
+    if (dropdownValues.length < 5) {
+      setDropdownValues([...dropdownValues, ""]);
+    }
   };
 
   const handleDropdownValueChange = (index, value) => {
-    const newValues = [...dropdownInputFields];
+    const newValues = [...dropdownValues];
     newValues[index] = value;
-    setDropdownInputFields(newValues);
-  };
-
-  // Handle adding checkbox values
-  const handleAddCheckboxValue = () => {
-    setCheckboxInputFields([...checkboxInputFields, '']);
-  };
-
-  const handleCheckboxValueChange = (index, value) => {
-    const newValues = [...checkboxInputFields];
-    newValues[index] = value;
-    setCheckboxInputFields(newValues);
+    setDropdownValues(newValues);
   };
 
   // Handle adding radio values
   const handleAddRadioValue = () => {
-    setRadioInputFields([...radioInputFields, '']);
+    if (radioValues.length < 5) {
+      setRadioValues([...radioValues, ""]);
+    }
   };
 
   const handleRadioValueChange = (index, value) => {
-    const newValues = [...radioInputFields];
+    const newValues = [...radioValues];
     newValues[index] = value;
-    setRadioInputFields(newValues);
+    setRadioValues(newValues);
   };
 
-  // Handle adding a column with its type and values
+  // Handle adding a column
   const handleAddColumn = () => {
     setColumns([
       ...columns,
       {
         id: columns.length + 1,
         columnName,
-        isDropdown,
-        isCheckbox,
-        isRadio,
+        dataType,
         serialNo: columns.length + 1,
-        dropdownValues: dropdownInputFields,
-        checkboxValues: checkboxInputFields,
-        radioValues: radioInputFields,
+        dropdownValues: dataType === "Dropdown" ? dropdownValues : [],
+        radioValues: dataType === "Radio" ? radioValues : [],
       },
     ]);
     // Reset the form state
-    setColumnName('');
-    setIsDropdown(false);
-    setIsCheckbox(false);
-    setIsRadio(false);
+    setColumnName("");
+    setDataType("String");
     setDropdownValues([]);
-    setCheckboxValues([]);
     setRadioValues([]);
-    setDropdownInputFields([]);
-    setCheckboxInputFields([]);
-    setRadioInputFields([]);
   };
 
   // Navigate to Add Data page
   const handleAddAccountingData = () => {
-    navigate('/add-accounting-data'); // Redirect to Add Data page
+    navigate("/add-accounting-data");
   };
 
   return (
     <div className="accounting-container">
-      {/* Button to add data */}
       <div className="top-button-container">
         <button onClick={handleAddAccountingData} className="add-accounting-data-btn">
           Add Accounting Data
@@ -104,42 +80,28 @@ const Accounting = () => {
             className="input-field"
           />
         </div>
+
         <div className="form-group">
-          <label>Column Type:</label>
-          <div>
-            <input
-              type="checkbox"
-              id="dropdown"
-              checked={isDropdown}
-              onChange={() => setIsDropdown(!isDropdown)}
-            />
-            <label htmlFor="dropdown">Is Dropdown</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="checkbox"
-              checked={isCheckbox}
-              onChange={() => setIsCheckbox(!isCheckbox)}
-            />
-            <label htmlFor="checkbox">Is Checkbox</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="radio"
-              checked={isRadio}
-              onChange={() => setIsRadio(!isRadio)}
-            />
-            <label htmlFor="radio">Is Radio</label>
-          </div>
+          <label>Data Type:</label>
+          <select
+            value={dataType}
+            onChange={(e) => setDataType(e.target.value)}
+            className="input-field"
+          >
+            <option value="String">String</option>
+            <option value="Integer">Integer</option>
+            <option value="Boolean">Boolean</option>
+            <option value="Checkbox">Checkbox</option>
+            <option value="Radio">Radio</option>
+            <option value="Dropdown">Dropdown</option>
+          </select>
         </div>
 
         {/* Dropdown Values Input */}
-        {isDropdown && (
+        {dataType === "Dropdown" && (
           <div className="dropdown-container">
             <h3>Dropdown Values:</h3>
-            {dropdownInputFields.map((value, index) => (
+            {dropdownValues.map((value, index) => (
               <div key={index} className="dropdown-input-group">
                 <input
                   type="text"
@@ -150,38 +112,19 @@ const Accounting = () => {
                 />
               </div>
             ))}
-            <button onClick={handleAddDropdownValue} className="add-dropdown-btn">
-              Add Dropdown Value
-            </button>
-          </div>
-        )}
-
-        {/* Checkbox Values Input */}
-        {isCheckbox && (
-          <div className="checkbox-container">
-            <h3>Checkbox Values:</h3>
-            {checkboxInputFields.map((value, index) => (
-              <div key={index} className="checkbox-input-group">
-                <input
-                  type="text"
-                  value={value}
-                  onChange={(e) => handleCheckboxValueChange(index, e.target.value)}
-                  className="input-field checkbox-input"
-                  placeholder={`Checkbox value ${index + 1}`}
-                />
-              </div>
-            ))}
-            <button onClick={handleAddCheckboxValue} className="add-checkbox-btn">
-              Add Checkbox Value
-            </button>
+            {dropdownValues.length < 5 && (
+              <button onClick={handleAddDropdownValue} className="add-dropdown-btn">
+                Add Dropdown Value
+              </button>
+            )}
           </div>
         )}
 
         {/* Radio Values Input */}
-        {isRadio && (
+        {dataType === "Radio" && (
           <div className="radio-container">
             <h3>Radio Values:</h3>
-            {radioInputFields.map((value, index) => (
+            {radioValues.map((value, index) => (
               <div key={index} className="radio-input-group">
                 <input
                   type="text"
@@ -192,9 +135,11 @@ const Accounting = () => {
                 />
               </div>
             ))}
-            <button onClick={handleAddRadioValue} className="add-radio-btn">
-              Add Radio Value
-            </button>
+            {radioValues.length < 5 && (
+              <button onClick={handleAddRadioValue} className="add-radio-btn">
+                Add Radio Value
+              </button>
+            )}
           </div>
         )}
 
@@ -210,12 +155,9 @@ const Accounting = () => {
             <tr>
               <th>Column ID</th>
               <th>Column Name</th>
-              <th>Is Dropdown</th>
-              <th>Is Checkbox</th>
-              <th>Is Radio</th>
+              <th>Data Type</th>
               <th>Serial No</th>
               <th>Dropdown Values</th>
-              <th>Checkbox Values</th>
               <th>Radio Values</th>
             </tr>
           </thead>
@@ -224,13 +166,10 @@ const Accounting = () => {
               <tr key={column.id}>
                 <td>{column.id}</td>
                 <td>{column.columnName}</td>
-                <td>{column.isDropdown ? 'Yes' : 'No'}</td>
-                <td>{column.isCheckbox ? 'Yes' : 'No'}</td>
-                <td>{column.isRadio ? 'Yes' : 'No'}</td>
+                <td>{column.dataType}</td>
                 <td>{column.serialNo}</td>
-                <td>{column.dropdownValues.join(', ')}</td>
-                <td>{column.checkboxValues.join(', ')}</td>
-                <td>{column.radioValues.join(', ')}</td>
+                <td>{column.dropdownValues.join(", ")}</td>
+                <td>{column.radioValues.join(", ")}</td>
               </tr>
             ))}
           </tbody>

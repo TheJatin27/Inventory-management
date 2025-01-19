@@ -5,9 +5,8 @@ import './Inventory.css';
 const Inventory = () => {
   const [columnName, setColumnName] = useState('');
   const [dataType, setDataType] = useState('string');
-  const [dropdownValues, setDropdownValues] = useState([]);
-  const [columns, setColumns] = useState([]);
   const [inputFields, setInputFields] = useState([]); // Shared for Dropdown and Radio values
+  const [columns, setColumns] = useState([]);
   const navigate = useNavigate();
 
   const handleAddInputField = () => {
@@ -38,16 +37,23 @@ const Inventory = () => {
     setInputFields([]); // Reset input fields
   };
 
-  const handleRedirect = () => {
+  const handleRedirectToAddData = () => {
     navigate('/AddInventoryData');
+  };
+
+  const handleViewReport = () => {
+    navigate('/ReportPage');
   };
 
   return (
     <div className="inventory-container">
-      {/* Add Data Button */}
+      {/* Top Action Buttons */}
       <div className="top-actions">
-        <button onClick={handleRedirect} className="add-data-btn">
+        <button onClick={handleRedirectToAddData} className="add-data-btn">
           Add Data
+        </button>
+        <button onClick={handleViewReport} className="view-report-btn">
+          View Report
         </button>
       </div>
 
@@ -129,7 +135,7 @@ const Inventory = () => {
               <td>{column.serialNo}</td>
               <td>{column.values.join(', ')}</td>
               <td>
-                <button onClick={handleRedirect} className="redirect-btn">
+                <button onClick={handleRedirectToAddData} className="redirect-btn">
                   Add Inventory Data
                 </button>
               </td>

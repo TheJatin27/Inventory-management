@@ -206,3 +206,18 @@ h3 {
 .add-data-btn:hover {
   background-color: #1565C0;
 }
+
+.view-report-btn {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.view-report-btn:hover {
+  background-color: #0056b3;
+}

@@ -1,179 +1,252 @@
-/* Button at the top */
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.invoice-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 5%;
+}
+
+/* Header */
+h2, h3 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* Top button */
 .top-button-container {
-  display: flex;
-  justify-content: flex-end;
+  text-align: center;
   margin-bottom: 20px;
 }
 
 .add-invoice-data-btn {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
+  background-color: #007bff;
+  color: #fff;
   padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .add-invoice-data-btn:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
-/* Keeping the rest of the previous styles */
-.invoice-container {
-  padding: 20px;
-  background-color: #f4f4f4;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-
-h2 {
-  color: #333;
-}
-
-h3 {
-  color: #333;
-  margin-top: 20px;
-}
-
+/* Form styles */
 .form-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
 }
 
 .input-field {
   width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.add-dropdown-btn,
-.add-column-btn {
-  background-color: #1F5061;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.add-dropdown-btn:hover,
-.add-column-btn:hover {
-  background-color: #D32F2F;
-}
-
-.inventory-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.inventory-table th,
-.inventory-table td {
   padding: 10px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
-
-.inventory-table th {
-  background-color: #1F5061;
-  color: white;
-}
-
-.inventory-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.dropdown-container {
-  margin-top: 15px;
-}
-
-.dropdown-input-group {
-  margin-bottom: 10px;
-}
-
-.dropdown-input {
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s;
 }
 
-@media (max-width: 768px) {
-  .invoice-container {
-    padding: 10px;
-    margin-top: 30%;
-  }
-
-  .form-container {
-    padding: 15px;
-  }
-
-  .input-field,
-  .dropdown-container {
-    font-size: 14px;
-  }
-
-  .inventory-table {
-    font-size: 12px;
-  }
-
-  .inventory-table th,
-  .inventory-table td {
-    padding: 8px;
-  }
-
-  .dropdown-input {
-    font-size: 12px;
-  }
+.input-field:focus {
+  border-color: #007bff;
+  outline: none;
 }
-/* Checkbox and Radio Inputs */
-.checkbox-container,
+
+/* Dropdown and radio button sections */
+.dropdown-container,
 .radio-container {
   margin-top: 20px;
 }
 
-.checkbox-input-group,
-.radio-input-group {
-  margin-bottom: 10px;
-}
-
-.checkbox-input,
-.radio-input {
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.add-checkbox-btn,
-.add-radio-btn {
-  background-color: #1F5061;
-  color: white;
+.add-dropdown-btn,
+.add-radio-btn,
+.add-column-btn {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
   border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-dropdown-btn:hover,
+.add-radio-btn:hover,
+.add-column-btn:hover {
+  background-color: #218838;
+}
+
+/* Table styles */
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.invoice-table thead {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+.invoice-table th {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.invoice-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.invoice-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .invoice-container {
+    padding: 15px;
+  }
+
+  h2, h3 {
+    font-size: 1.6rem;
+  }
+
+  .add-invoice-data-btn,
+  .add-dropdown-btn,
+  .add-radio-btn,
+  .add-column-btn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    gap: 15px;
+  }
+
+  h2, h3 {
+    font-size: 1.4rem;
+  }
+
+  .input-field {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .add-invoice-data-btn,
+  .add-dropdown-btn,
+  .add-radio-btn,
+  .add-column-btn {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .invoice-container {
+    padding: 10px;
+  }
+
+  h2, h3 {
+    font-size: 1.2rem;
+  }
+
+  .form-container {
+    gap: 10px;
+  }
+
+  .input-field {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .add-invoice-data-btn,
+  .add-dropdown-btn,
+  .add-radio-btn,
+  .add-column-btn {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .invoice-table {
+    width: 800px; /* Ensure the table is scrollable for small screens */
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
+.view-invoices-btn {
+  margin-left: 10px;
   padding: 10px 20px;
-  font-size: 16px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
+  font-size: 16px;
 }
 
-.add-checkbox-btn:hover,
-.add-radio-btn:hover {
-  background-color: #D32F2F;
+.view-invoices-btn:hover {
+  background-color: #218838;
 }
