@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "react-datepicker/dist/react-datepicker.css";
 import './Inventory.css';
 
 const Inventory = () => {

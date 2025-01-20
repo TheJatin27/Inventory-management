@@ -48,6 +48,36 @@ const ReportPage = () => {
     ],
   };
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 12,
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 10,
+          },
+        },
+      },
+      y: {
+        ticks: {
+          font: {
+            size: 10,
+          },
+        },
+      },
+    },
+  };
+
   const handleFilterChange = (e) => {
     setFilterType(e.target.value);
   };
@@ -117,17 +147,23 @@ const ReportPage = () => {
       <div className="charts-container">
         <div className="chart-section">
           <h2>Inventory Distribution</h2>
-          <Pie data={inventoryData} />
+          <div className="chart-container">
+            <Pie data={inventoryData} options={options} />
+          </div>
         </div>
 
         <div className="chart-section">
           <h2>Sales Overview</h2>
-          <Bar data={salesData} />
+          <div className="chart-container">
+            <Bar data={salesData} options={options} />
+          </div>
         </div>
 
         <div className="chart-section">
           <h2>Profit/Loss Analysis</h2>
-          <Bar data={profitLossData} />
+          <div className="chart-container">
+            <Bar data={profitLossData} options={options} />
+          </div>
         </div>
       </div>
     </div>
