@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Pie, Bar } from "react-chartjs-2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./ReportPage.css";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend } from "chart.js";
+
+// Register components globally
+ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
 
 const ReportPage = () => {
   const [filterType, setFilterType] = useState("productId");
   const [filterValue, setFilterValue] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+
+  const inventoryChartRef = useRef(null);
+  const salesChartRef = useRef(null);
+  const profitLossChartRef = useRef(null);
 
   // Dummy data for demonstration
   const inventoryData = {
@@ -86,6 +94,15 @@ const ReportPage = () => {
     setFilterValue(e.target.value);
   };
 
+  useEffect(() => {
+    // Clean up chart instances when component unmounts
+    return () => {
+      if (inventoryChartRef.current) inventoryChartRef.current.destroy();
+      if (salesChartRef.current) salesChartRef.current.destroy();
+      if (profitLossChartRef.current) profitLossChartRef.current.destroy();
+    };
+  }, []);
+
   return (
     <div className="report-page-container">
       <h1 className="page-title">Reports</h1>
@@ -148,21 +165,21 @@ const ReportPage = () => {
         <div className="chart-section">
           <h2>Inventory Distribution</h2>
           <div className="chart-container">
-            <Pie data={inventoryData} options={options} />
+            <Pie ref={inventoryChartRef} data={inventoryData} options={options} />
           </div>
         </div>
 
         <div className="chart-section">
           <h2>Sales Overview</h2>
           <div className="chart-container">
-            <Bar data={salesData} options={options} />
+            <Bar ref={salesChartRef} data={salesData} options={options} />
           </div>
         </div>
 
         <div className="chart-section">
           <h2>Profit/Loss Analysis</h2>
           <div className="chart-container">
-            <Bar data={profitLossData} options={options} />
+            <Bar ref={profitLossChartRef} data={profitLossData} options={options} />
           </div>
         </div>
       </div>
